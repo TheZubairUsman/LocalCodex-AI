@@ -10,7 +10,6 @@ This project acts as a personal AI command center, combining multiple local mode
   <img src="assets/banner.png" alt="LocalCodex-AI Banner" />
 </p>
 
-![Banner](assets/banner.png)
 ## 🔹 Overview
 
 **LocalCodex-AI is built to provide:**
