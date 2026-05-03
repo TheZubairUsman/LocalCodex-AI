@@ -1,0 +1,56 @@
+{
+  "default_project": "C:\\Users\\Administrator\\AI_SYSTEM",
+  "logs_dir": "C:\\Users\\Administrator\\AI_SYSTEM\\logs",
+  "memory_file": "C:\\Users\\Administrator\\AI_SYSTEM\\logs\\session_memory.jsonl",
+  "providers": {
+    "ollama": {
+      "type": "ollama",
+      "enabled": true,
+      "base_url": "http://127.0.0.1:11434",
+      "timeout_seconds": 180
+    },
+    "open_interpreter": {
+      "type": "open_interpreter",
+      "enabled": false,
+      "auto_run": false
+    }
+  },
+  "model_catalog": [
+    {
+      "name": "codellama:7b",
+      "provider": "ollama",
+      "roles": ["coding", "debug", "refactor", "test"],
+      "description": "Primary local coding model.",
+      "priority": 100,
+      "strengths": ["code generation", "refactoring", "bug fixing"],
+      "constraints": ["higher latency than phi3"]
+    },
+    {
+      "name": "mistral:latest",
+      "provider": "ollama",
+      "roles": ["architecture", "summarize", "explain", "research"],
+      "description": "Primary analysis and architecture model.",
+      "priority": 90,
+      "strengths": ["project summaries", "architecture plans", "documentation"],
+      "constraints": ["not the strongest installed model for file rewrites"]
+    },
+    {
+      "name": "phi3:latest",
+      "provider": "ollama",
+      "roles": ["general", "fallback", "chat"],
+      "description": "Fast fallback and chat model.",
+      "priority": 80,
+      "strengths": ["latency", "fallback responses"],
+      "constraints": ["weaker than codellama for complex code tasks"]
+    }
+  ],
+  "tooling": {
+    "max_file_chars": 6000,
+    "max_context_files": 10,
+    "max_tree_entries": 120,
+    "allow_command_execution": false,
+    "allowed_command_prefixes": ["python", "py", "pytest", "git", "rg"],
+    "backup_writes": true,
+    "plugin_paths": []
+  }
+}
